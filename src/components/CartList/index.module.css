@@ -1,0 +1,40 @@
+.cartList {
+  display: grid;
+  grid-template-columns: 3fr repeat(2, 1fr);
+  grid-template-areas: "Product Quantity Cost";
+}
+
+.header {
+  font-size: large;
+  color: var(--white-font-color);
+  padding: 10px 0;
+  background: var(--theme-color-pink);
+  position: relative;
+  padding-left: 10px;
+}
+
+.gridBody {
+  padding-left: 10px;
+  padding-top: 10px;
+  align-self: center;
+}
+
+.header:first-child {
+  border-top-left-radius: 10px;
+}
+
+.header:nth-child(3) {
+  border-top-right-radius: 10px;
+}
+
+.product {
+  grid-area: Product;
+}
+
+.quantity {
+  grid-area: Quantity;
+}
+
+.cost {
+  grid-area: Cost;
+}

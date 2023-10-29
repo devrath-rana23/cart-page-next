@@ -6,22 +6,46 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --theme-color-pink: #9c27b0;
+  --white-font-color: #fff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+html {
+  box-sizing: border-box;
+  font-weight: 600;
+}
+
+button {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 6px 7px 40px -4px rgba(0, 0, 0, 0.2);
+}
+
+button span {
+  position: absolute;
+  border-radius: 50%;
+  /* To make it round */
+  background-color: rgba(0, 0, 0, 0.3);
+
+  width: 100px;
+  height: 100px;
+  margin-top: -50px;
+  /* for positioning */
+  margin-left: -50px;
+
+  animation: ripple 1s;
+  opacity: 0;
+}
+
+/* Add animation */
+@keyframes ripple {
+  from {
+    opacity: 1;
+    transform: scale(0);
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  to {
+    opacity: 0;
+    transform: scale(10);
+  }
 }

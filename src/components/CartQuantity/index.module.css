@@ -1,0 +1,18 @@
+.cartQuantityContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
+}
+
+.qtyVal {
+  text-align: center;
+  align-self: center;
+}
+
+.btn {
+  color: var(--white-font-color);
+  background: var(--theme-color-pink);
+  border-radius: 10px;
+  height: 50px;
+  width: 50px;
+}

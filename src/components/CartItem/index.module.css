@@ -1,0 +1,59 @@
+.cartItem {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  grid-template-areas: "CartItemImage CartItemDescriptionContainer";
+  column-gap: 10px;
+}
+
+.cartItemImage {
+  grid-area: CartItemImage;
+  height: 200px;
+  width: 180px;
+}
+
+.cartItemDescriptionContainer {
+  grid-area: CartItemDescriptionContainer;
+  display: grid;
+  grid-template-areas:
+    "CartItemName CartItemName CartItemName CartItemName ."
+    "CartItemColor CartItemColor CartItemSize . ."
+    "CartItemDeliveryTime CartItemDeliveryTime . . ."
+    "Hr Hr Hr Hr Hr"
+    "WishlistActionBtn WishlistActionBtn . . RemoveActionBtn";
+}
+
+.hr {
+  grid-area: Hr;
+}
+
+.cartItemName {
+  grid-area: CartItemName;
+  font-size: 35px;
+}
+
+.cartItemColor {
+  grid-area: CartItemColor;
+}
+
+.cartItemSize {
+  grid-area: CartItemSize;
+}
+
+.cartItemDeliveryTime {
+  font-weight: 300;
+  grid-area: CartItemDeliveryTime;
+}
+
+.wishlistActionBtn {
+  grid-area: WishlistActionBtn;
+  background: var(--theme-color-pink);
+  color: var(--white-font-color);
+  border-radius: 10px;
+}
+
+.removeActionBtn {
+  grid-area: RemoveActionBtn;
+  background: var(--theme-color-pink);
+  color: var(--white-font-color);
+  border-radius: 10px;
+}

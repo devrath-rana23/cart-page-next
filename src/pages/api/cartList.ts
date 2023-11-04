@@ -2,6 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
+  id: number;
   name: string;
   color: string;
   size: string;
@@ -18,6 +19,7 @@ export default function handler(
     convenienceFee: 100,
     data: [
       {
+        id: 1,
         name: "Cool & Comfy Classics",
         color: "Blue & White",
         size: "M",
@@ -26,6 +28,7 @@ export default function handler(
         price: 2500,
       },
       {
+        id: 2,
         name: "Sarees",
         color: "Orange",
         size: "L",
@@ -34,6 +37,7 @@ export default function handler(
         price: 5500,
       },
       {
+        id: 3,
         name: "Jeans",
         color: "Blue",
         size: "L",

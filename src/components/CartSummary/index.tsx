@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import css from "./index.module.css";
 import { useDebounce } from "@/hooks/useDebounce";
+import { useCartContext } from "../Cart";
 
 const initialState = {
   coinsUsed: 0,
@@ -9,7 +10,8 @@ const initialState = {
   maxCoins: 0,
   totalCashAmountPayable: 0,
 };
-const CartSummary = ({ cartListData, coinsBalance = 210 }: any) => {
+const CartSummary = ({ coinsBalance = 210 }: any) => {
+  const { cartList }: any = useCartContext();
   const [cartSummaryDetails, setCartSummaryDetails] = useState(initialState);
 
   useEffect(() => {
@@ -24,12 +26,12 @@ const CartSummary = ({ cartListData, coinsBalance = 210 }: any) => {
       maxCoins,
       totalCashAmountPayable,
     });
-  }, [useDebounce(cartSummaryDetails.coinsUsed)]);
+  }, [useDebounce(cartSummaryDetails.coinsUsed), useDebounce(cartList)]);
 
   const getTotalCostOfItem = (price: number, qty: number) => +price * +qty;
 
   const getTotalMrp = () => {
-    return +cartListData?.data?.reduce(
+    return +cartList?.data?.reduce(
       (accumulator: number, currentValue: any) =>
         +accumulator +
         getTotalCostOfItem(currentValue?.price, currentValue?.quantity),
@@ -38,7 +40,7 @@ const CartSummary = ({ cartListData, coinsBalance = 210 }: any) => {
   };
 
   const getTotalAmount = (totalMrp: number) =>
-    +cartListData?.convenienceFee + +totalMrp;
+    +cartList?.convenienceFee + +totalMrp;
 
   const getMaxCoins = (totalAmount: number) =>
     totalAmount > coinsBalance ? coinsBalance : totalAmount;
@@ -59,8 +61,8 @@ const CartSummary = ({ cartListData, coinsBalance = 210 }: any) => {
       <h1 className={css.cartSummaryTitle}>Cart Summary</h1>
       <div className={css.cartSummaryBody}>
         <p>
-          Total MRP ({cartListData?.data?.length || 0}{" "}
-          {cartListData?.data?.length < 2 ? "item" : "items"})
+          Total MRP ({cartList?.data?.length || 0}{" "}
+          {cartList?.data?.length < 2 ? "item" : "items"})
         </p>
         <strong className={css.cartSummaryValue}>
           Rs {cartSummaryDetails.totalMrp}
@@ -68,9 +70,7 @@ const CartSummary = ({ cartListData, coinsBalance = 210 }: any) => {
       </div>
       <div className={css.cartSummaryBody}>
         <p>Convenience Fee</p>
-        <p className={css.cartSummaryValue}>
-          Rs {cartListData?.convenienceFee}
-        </p>
+        <p className={css.cartSummaryValue}>Rs {cartList?.convenienceFee}</p>
       </div>
       <div className={css.cartSummaryBody}>
         <strong>Total Amount</strong>

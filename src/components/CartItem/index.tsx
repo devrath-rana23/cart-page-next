@@ -1,6 +1,7 @@
 import React from "react";
 import css from "./index.module.css";
 import ImageComp from "../common/ImageComp";
+import { useCartContext } from "../Cart";
 
 export const addRippleSpan = (e: any) => {
   // Create span element
@@ -28,13 +29,18 @@ export const addRippleSpan = (e: any) => {
   }, 300);
 };
 
-const CartItem = ({ cartItem }: any) => {
+const CartItem = ({ cartItem, dataIndex }: any) => {
+  const { cartList, setCartList }: any = useCartContext();
+
   const handleAddWishlist = (e: any) => {
     addRippleSpan(e);
   };
 
   const handleRemoveItem = (e: any) => {
     addRippleSpan(e);
+    const cartListDataCopy = JSON.parse(JSON.stringify(cartList.data));
+    cartListDataCopy.splice(dataIndex, 1);
+    setCartList({ ...cartList, data: cartListDataCopy });
   };
 
   return (

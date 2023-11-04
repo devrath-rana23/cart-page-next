@@ -1,24 +1,17 @@
-import Cross from "@/components/common/Cross";
-import Hamburger from "@/components/common/Hamburger";
-import LOGO from "../assets/img/logo.svg";
 import Cart from "@/components/Cart";
-import BreadCrumb from "@/components/common/BreadCrumb";
-import ImageComp from "@/components/common/ImageComp";
+import Header from "@/components/Header";
+import { useState } from "react";
 
 export default function Home() {
+  const [isOpenSideDrawer, setIsOpenSideDrawer] = useState(false);
+
   return (
-    <>
-      <Hamburger />
-      <Cross />
-      <ImageComp
-        isNextImage
-        src={LOGO}
-        height={"50px"}
-        width={"50px"}
-        alt="logo"
+    <div onClick={() => setIsOpenSideDrawer(false)}>
+      <Header
+        isOpenSideDrawer={isOpenSideDrawer}
+        setIsOpenSideDrawer={setIsOpenSideDrawer}
       />
-      <BreadCrumb />
       <Cart />
-    </>
+    </div>
   );
 }

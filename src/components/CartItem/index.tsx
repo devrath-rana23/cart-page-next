@@ -28,7 +28,7 @@ export const addRippleSpan = (e: any) => {
   }, 300);
 };
 
-const CartItem = () => {
+const CartItem = ({ cartItem }: any) => {
   const handleAddWishlist = (e: any) => {
     addRippleSpan(e);
   };
@@ -47,12 +47,14 @@ const CartItem = () => {
         />
       </figure>
       <article className={css.cartItemDescriptionContainer}>
-        <h3 className={css.cartItemName}>Cool & Comfy Classics</h3>
-        <p className={css.cartItemColor}>Color: Blue & White</p>
-        <p className={css.cartItemSize}>Size: M</p>
-        <p className={css.cartItemDeliveryTime}>
-          Delivered in 2-3 working days
+        <h3 className={css.cartItemName}>{cartItem?.name || ""}</h3>
+        <p className={css.cartItemColor}>
+          {cartItem?.color ? `Color: ${cartItem?.color}` : ""}
         </p>
+        <p className={css.cartItemSize}>
+          {cartItem?.size ? `Size: ${cartItem?.size}` : ""}
+        </p>
+        <p className={css.cartItemDeliveryTime}>{cartItem?.eta}</p>
         <hr className={css.hr} />
         <button
           className={`${css.wishlistActionBtn}`}

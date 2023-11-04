@@ -13,7 +13,14 @@
 
 .cartSummaryBody {
   display: grid;
-  grid-template-columns: 9fr 1fr;
+  grid-template-columns: 7fr 3fr;
   align-items: center;
-  
+}
+
+.cartSummaryValue{
+  justify-self: end;
+}
+
+.cartSummaryRange{
+  display: grid;
 }
